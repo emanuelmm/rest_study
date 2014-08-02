@@ -17,24 +17,42 @@
  */
 package br.com.emanuel.rest_study.service;
 
+import br.com.emanuel.rest_study.entity.Funcionario;
+import br.com.emanuel.rest_study.entity.FuncionarioJPA;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author emanuel
  */
-@Path("prices")
+@Path("funcionario")
 @Stateless
-public class PricesService { 
-    
+public class FuncionarioService {
+
+    @Inject
+    private FuncionarioJPA funcionarioJPA;
+
     @GET
-    @Path("teste")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String checkThePrice() {
-        return "testes";
+    @Produces(MediaType.APPLICATION_JSON)
+    public Funcionario buscarPorId(@QueryParam("id") int id) {
+        return funcionarioJPA.buscarPorId(id);
     }
+
+    @Path("criar")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Funcionario create(@QueryParam("nome") String nome, @QueryParam("salario") double salario) {
+        Funcionario f = new Funcionario();
+        f.setNome(nome);
+        f.setSalario(salario);
+        f = funcionarioJPA.salvar(f);
+        return f;
+    }
+
 }
