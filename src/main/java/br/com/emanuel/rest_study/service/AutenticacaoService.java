@@ -24,7 +24,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /** 
- *
+ * @author Max Lam - http://www.developerscrappad.com/1814/java/java-ee/rest-jax-rs/java-ee-7-jax-rs-2-0-simple-rest-api-authentication-authorization-with-custom-http-header/
  * @author Emanuel Cordeiro
  * 
  */
