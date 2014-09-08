@@ -24,8 +24,7 @@ public class Autenticador {
     private final Map<String, String> authorizationTokensStorage = new HashMap();
 
     private Autenticador() {
-//        serviceKeysStorage.put("f80ebc87-ad5c-4b29-9366-5359768df5a1", "username1");
-//        serviceKeysStorage.put("3b91cab8-926f-49b6-ba00-920bcf934c2a", "username2");
+
     }
 
     public String login(String chaveUsuario, String login, String senha) throws LoginException {

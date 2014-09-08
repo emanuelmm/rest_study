@@ -52,7 +52,7 @@ public class AutenticacaoService {
 
         } catch (final LoginException ex) {
             JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
-            jsonObjBuilder.add("message", "Problem matching service key, username and password");
+            jsonObjBuilder.add("mensagem", "Problema encontrado na autenticação. Verifique seu usuário e senha ou a chave do serviço.");
             JsonObject jsonObj = jsonObjBuilder.build();
 
             return getNoCacheResponseBuilder(Response.Status.UNAUTHORIZED).entity(jsonObj.toString()).build();
