@@ -27,7 +27,8 @@ public class Autenticador {
 
     }
 
-    public String login(String chaveUsuario, String login, String senha) throws LoginException {
+    public String login(String chaveUsuario, String login, String senha) 
+            throws LoginException {
 
         ChaveUsuario chaveFounded = chaveUsuarioJPA.buscarPorChave(chaveUsuario);
         if (chaveFounded != null && chaveFounded.getUsuario().equals(login)) {

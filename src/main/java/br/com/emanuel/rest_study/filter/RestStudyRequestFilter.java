@@ -17,14 +17,13 @@ import javax.ws.rs.ext.Provider;
  * @author Max Lam - http://www.developerscrappad.com/1814/java/java-ee/rest-jax-rs/java-ee-7-jax-rs-2-0-simple-rest-api-authentication-authorization-with-custom-http-header/
  * @author Emanuel Cordeiro
  */
-
 @Provider
 @PreMatching
 public class RestStudyRequestFilter implements ContainerRequestFilter {
 
     private final static Logger log = Logger.getLogger( RestStudyRequestFilter.class.getName() );
     
-    @Inject
+    @Inject 
     private Autenticador autenticador;
 
     @Override
@@ -48,7 +47,6 @@ public class RestStudyRequestFilter implements ContainerRequestFilter {
         }
 
         // For any pther methods besides login, the authToken must be verified
-        System.out.println("path" + path);
         if ( !path.contains("login" ) ) {
             String authToken = requestCtx.getHeaderString( RestStudyHTTPHeaderNames.AUTH_TOKEN );
             // if it isn't valid, just kick them out.

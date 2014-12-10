@@ -38,9 +38,12 @@ public class AutenticacaoService {
     @POST
     @Path("login")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response login(@Context HttpHeaders httpHeaders, @FormParam("usuario") String usuario, @FormParam("senha") String senha) {
+    public Response login(@Context HttpHeaders httpHeaders, 
+                @FormParam("usuario") String usuario, 
+                    @FormParam("senha") String senha) {
 
-        String serviceKey = httpHeaders.getHeaderString(RestStudyHTTPHeaderNames.SERVICE_KEY);
+        String serviceKey = 
+                httpHeaders.getHeaderString(RestStudyHTTPHeaderNames.SERVICE_KEY);
         try {
             String authToken = autenticador.login(serviceKey, usuario, senha);
 
@@ -52,7 +55,8 @@ public class AutenticacaoService {
 
         } catch (final LoginException ex) {
             JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
-            jsonObjBuilder.add("mensagem", "Problema encontrado na autenticação. Verifique seu usuário e senha ou a chave do serviço.");
+            jsonObjBuilder.add("mensagem", "Problema encontrado na autenticação. "
+                    + "Verifique seu usuário e senha ou a chave do serviço.");
             JsonObject jsonObj = jsonObjBuilder.build();
 
             return getNoCacheResponseBuilder(Response.Status.UNAUTHORIZED).entity(jsonObj.toString()).build();
